@@ -23,6 +23,10 @@ async def lifespan(app: FastAPI):
     finally: db.close()
     yield
 
+# Create storage dirs eagerly at import time so StaticFiles never fails on a
+# fresh serverless instance (e.g. Vercel) where /tmp/storage doesn't exist yet.
+ensure_storage_directories()
+
 app = FastAPI(title="Marine Debris Detection API", lifespan=lifespan)
 _default_origins = "http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173"
 _frontend_url = os.getenv("FRONTEND_URL", "").strip()
