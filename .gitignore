@@ -109,3 +109,5 @@ desktop.ini
 # Logs
 # =========================
 *.log
+.env*
+!.env.example

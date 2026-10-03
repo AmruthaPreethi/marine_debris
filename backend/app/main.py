@@ -24,7 +24,12 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(title="Marine Debris Detection API", lifespan=lifespan)
-cors_origins = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",") if origin.strip()]
+_default_origins = "http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173"
+_frontend_url = os.getenv("FRONTEND_URL", "").strip()
+_cors_env = os.getenv("CORS_ORIGINS", _default_origins)
+cors_origins = [o.strip() for o in _cors_env.split(",") if o.strip()]
+if _frontend_url and _frontend_url not in cors_origins:
+    cors_origins.append(_frontend_url)
 app.add_middleware(CORSMiddleware, allow_origins=cors_origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 app.mount("/storage", StaticFiles(directory=STORAGE_DIR), name="storage")
 app.include_router(auth.router); app.include_router(analysis.router); app.include_router(statistics.router); app.include_router(reports.router)
