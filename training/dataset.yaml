@@ -1,0 +1,8 @@
+path: C:/Users/Amrutha/OneDrive/Desktop/marine3/marine-debris-detection/training/Combined_Dataset_5class
+
+train: train/images
+val: val/images
+test: test/images
+
+nc: 5
+names: ['shipwreck', 'airplane', 'mine', 'human', 'cylinder']

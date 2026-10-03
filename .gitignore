@@ -1,0 +1,111 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache / tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Database
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# Storage / Uploaded Files
+# =========================
+storage/uploads/*
+storage/processed/*
+storage/annotated/*
+storage/reports/*
+
+# Keep folder structure
+!storage/uploads/.gitkeep
+!storage/processed/.gitkeep
+!storage/annotated/.gitkeep
+!storage/reports/.gitkeep
+
+# =========================
+# YOLO Training Outputs
+# =========================
+
+# Ignore all YOLO runs
+runs/*
+
+# Keep the trained model
+!runs/detect/
+!runs/detect/five_class/
+!runs/detect/five_class/weights/
+!runs/detect/five_class/weights/best.pt
+
+# Ignore other YOLO weights/checkpoints
+runs/detect/five_class/weights/*.pt
+!runs/detect/five_class/weights/best.pt
+
+# Ignore training-generated files
+training/runs/
+training/output/
+
+# =========================
+# Training Dataset
+# =========================
+training/dataset/
+training/data/
+datasets/
+data/
+
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Frontend Build
+# =========================
+frontend/dist/
+frontend/build/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+!.vscode/extensions.json
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Logs
+# =========================
+*.log
