@@ -3,7 +3,11 @@ from pathlib import Path
 
 BACKEND_DIR = Path(__file__).resolve().parents[2]
 PROJECT_ROOT = BACKEND_DIR.parent
-STORAGE_DIR = PROJECT_ROOT / "storage"
+
+# Vercel's filesystem is read-only except for /tmp.
+# Every other platform (local, Render, Railway …) uses the repo-relative path.
+_on_vercel = bool(os.getenv("VERCEL"))
+STORAGE_DIR = Path("/tmp/storage") if _on_vercel else PROJECT_ROOT / "storage"
 UPLOAD_DIR = STORAGE_DIR / "uploads"
 PROCESSED_DIR = STORAGE_DIR / "processed"
 ANNOTATED_DIR = STORAGE_DIR / "annotated"
