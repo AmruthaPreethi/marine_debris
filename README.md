@@ -48,7 +48,13 @@ An AI-assisted prototype for reviewing side-scan sonar imagery, recording potent
     ├── runs/                     # Training outputs and model weights
     └── training/                 # Dataset preparation and model training scripts
 ```
+## prerequisites
+Before running the project locally, make sure you have:
 
+- Python 3.10 or later
+- Node.js 18 or later
+- Git
+- A virtual environment for the Python backend
 ## Run locally
 
 ### 1. Start the backend
